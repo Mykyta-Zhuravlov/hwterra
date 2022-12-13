@@ -29,8 +29,8 @@ cidr_private_3                  = "10.1.23.0/24"
 
 
 // SSH KEY CONFIGURATION
-ssh_key_name    = "wordpress"
-public_key_path = "./wordpress.pub"
+ssh_key_name    = "MykytaZhuravlov"
+public_key_path = "./MykytaZhuravlov.pub"
 
 
 // RDS & SECURITY GROUP CONFIGURATION
