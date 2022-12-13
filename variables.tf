@@ -12,6 +12,11 @@ variable "sg_web_name" {}
 variable "port_db_ingress" {}
 variable "port_web_ingress_1" {}
 variable "port_web_ingress_2" {}
+variable "wp_user_ssm" {}
+variable "wp_password_ssm" {}
+variable "wp_title" {}
+variable "wp_mail" {}
+
 
 variable "vpc_name" {}
 variable "igw_name" {}

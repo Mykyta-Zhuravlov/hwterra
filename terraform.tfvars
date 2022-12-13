@@ -1,8 +1,12 @@
 // REGION CONFIGURATION
 region = "eu-west-1"
-az_1   = "eu-west-1a"
-az_2   = "eu-west-1b"
-az_3   = "eu-west-1c"
+
+
+// WORDPRESS CONFIGURATION
+wp_user_ssm     = "/wp_user"
+wp_password_ssm = "/wp_password"
+wp_title        = "Mykyta-Zhuravlov- AWS ECS"
+wp_mail         = "powerpow3r753@gmail.com"
 
 
 // VPC CONFIGURATION
@@ -102,3 +106,7 @@ ecs_service_desired_count     = "1"
 ecs_service_lb_container_name = "nginx"
 ecs_service_lb_container_port = "80"
 
+// AZS CONFIG
+az_1 = "eu-west-1a"
+az_2 = "eu-west-1b"
+az_3 = "eu-west-1c"
