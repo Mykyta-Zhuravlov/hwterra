@@ -23,4 +23,4 @@ data "aws_ssm_parameter" "db_password_ssm" {
 data "aws_ssm_parameter" "db_user_ssm" {
   name = var.db_user_ssm
 }
-121211
+12121111
