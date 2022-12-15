@@ -30,23 +30,23 @@ resource "aws_ecs_task_definition" "taskdef" {
         {
           "name" : "WORDPRESS_DB_PASSWORD",
           "valuefrom" : "${data.aws_ssm_parameter.db_password_ssm.value}"
-        },
+        } /* ,
         {
           "name" : "WORDPRESS_TITLE",
           "value" : "${var.wp_title}"
         },
         {
           "name" : "WORDPRESS_USER",
-          "valuefrom" : "${data.aws_ssm_parameter.wp_user_ssm.value}"
+          "valuefrom" : ${data.aws_ssm_parameter.wp_user_ssm.value}"
         },
         {
           "name" : "WORDPRESS_PASSWORD",
-          "valuefrom" : "${data.aws_ssm_parameter.wp_password_ssm.value}"
+          "valuefrom" : ${data.aws_ssm_parameter.wp_password_ssm.value}"
         },
         {
           "name" : "WORDPRESS_MAIL",
           "value" : "${var.wp_mail}"
-        }
+        } */
       ]
       portMappings = [
         {
