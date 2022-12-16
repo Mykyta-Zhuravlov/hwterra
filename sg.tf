@@ -8,7 +8,7 @@ resource "aws_security_group" "db_sg" {
     from_port       = var.port_db_ingress
     to_port         = var.port_db_ingress
     protocol        = "tcp"
-    security_groups = ["${aws_security_group.web_sg.id}"]
+    security_groups = ["${aws_security_group.ecs_instance_sg.id}"]
   }
 
   egress {
@@ -24,7 +24,15 @@ resource "aws_security_group" "db_sg" {
 
 }
 
-
+resource "aws_security_group" "ecs_instance_sg" {
+  vpc_id = aws_vpc.wordpress_vpc.id
+  ingress {
+    from_port       = var.port_web_ingress_1
+    to_port         = var.port_web_ingress_1
+    protocol        = "tcp"
+    security_groups = ["${aws_security_group.web_sg.id}"]
+  }
+}
 
 
 resource "aws_security_group" "web_sg" {
