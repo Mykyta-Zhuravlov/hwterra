@@ -1,5 +1,5 @@
 // DOMAIN CONFIGURATION
-domain_name = "powerpower.pp.ua"
+domain_name = "your_domain_name"
 
 
 // REGION CONFIGURATION
@@ -30,8 +30,8 @@ cidr_private_3                  = "10.1.23.0/24"
 
 
 // SSH KEY CONFIGURATION
-ssh_key_name    = "MykytaZhuravlov"
-public_key_path = "./MykytaZhuravlov.pub"
+ssh_key_name    = "key_name"
+public_key_path = "./keyway"
 
 
 // RDS & SECURITY GROUP CONFIGURATION

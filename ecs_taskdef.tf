@@ -9,6 +9,7 @@ resource "aws_ecs_task_definition" "taskdef" {
 
   container_definitions = jsonencode([
     {
+
       name      = "${var.container_1_name}"
       image     = "${var.container_1_image}"
       cpu       = "${var.container_1_cpu}"
@@ -41,6 +42,7 @@ resource "aws_ecs_task_definition" "taskdef" {
     },
 
     {
+
       name      = "${var.container_2_name}"
       image     = "${var.container_2_image}"
       cpu       = "${var.container_2_cpu}"
@@ -53,12 +55,9 @@ resource "aws_ecs_task_definition" "taskdef" {
           hostPort      = "${var.container_2_port}"
         }
       ]
+
     }
   ])
-
-
-
-
 }
 
 
