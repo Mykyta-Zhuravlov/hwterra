@@ -76,6 +76,7 @@ cluster_name = "wordpress"
 
 
 // ECS INSTANCE CONFIGURATION
+sg_ecs_instance_name             = "ecs-sg"
 ecs_instance_name                = "ecs_instance"
 ecs_instance_ami                 = "ami-08c011700cf146b89"
 ecs_instance_type                = "t2.micro"

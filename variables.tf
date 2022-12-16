@@ -9,6 +9,7 @@ variable "db_inst_type" {}
 variable "db_name" {}
 variable "sg_db_name" {}
 variable "sg_web_name" {}
+variable "sg_ecs_instance_name" {}
 variable "port_db_ingress" {}
 variable "port_web_ingress_1" {}
 variable "port_web_ingress_2" {}
