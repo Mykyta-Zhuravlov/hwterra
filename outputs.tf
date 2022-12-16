@@ -68,4 +68,6 @@ output "alp_dns" {
 output "dbend" {
   value = aws_db_instance.database.endpoint
 }
-
+output "dns_records" {
+  value = aws_route53_zone.zone.name_servers
+}

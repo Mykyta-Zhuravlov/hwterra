@@ -1,12 +1,9 @@
+// DOMAIN CONFIGURATION
+domain_name = "powerpower.pp.ua"
+
+
 // REGION CONFIGURATION
 region = "eu-west-1"
-
-
-// WORDPRESS CONFIGURATION
-wp_user_ssm     = "/wp_user"
-wp_password_ssm = "/wp_password"
-wp_title        = "Mykyta-Zhuravlov- AWS ECS"
-wp_mail         = "powerpow3r753@gmail.com"
 
 
 // VPC CONFIGURATION
@@ -55,7 +52,7 @@ port_db_ingress        = "3306"
 sg_web_name        = "sg-web"
 port_web_ingress_1 = "80"
 cidr_web_ingress_1 = ["0.0.0.0/0"]
-port_web_ingress_2 = "22"
+port_web_ingress_2 = "443"
 cidr_web_ingress_2 = ["0.0.0.0/0"]
 
 
@@ -67,7 +64,11 @@ load_balancer_target_name                = "alp-target-group"
 load_balancer_target_port                = "80"
 load_balancer_target_type                = "instance"
 load_balancer_target_protocol            = "HTTP"
-load_balancer_target_default_action_type = "forward"
+load_balancer_target_default_action_type = "redirect"
+load_balancer_https_port                 = "443"
+load_balancer_https_protocol             = "HTTPS"
+load_balancer_https_status_code          = "HTTP_301"
+load_balancer_https_policy               = "ELBSecurityPolicy-2016-08"
 
 
 // CLUSTER CONFIGURATION
@@ -100,11 +101,13 @@ container_2_cpu             = 128
 container_2_memory          = 256
 container_2_port            = 80
 
+
 // ECS SERVICE CONFIGURATION
 ecs_service_name              = "wordpress_service"
 ecs_service_desired_count     = "1"
 ecs_service_lb_container_name = "nginx"
 ecs_service_lb_container_port = "80"
+
 
 // AZS CONFIG
 az_1 = "eu-west-1a"

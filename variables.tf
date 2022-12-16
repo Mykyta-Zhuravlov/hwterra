@@ -12,12 +12,6 @@ variable "sg_web_name" {}
 variable "port_db_ingress" {}
 variable "port_web_ingress_1" {}
 variable "port_web_ingress_2" {}
-variable "wp_user_ssm" {}
-variable "wp_password_ssm" {}
-variable "wp_title" {}
-variable "wp_mail" {}
-
-
 variable "vpc_name" {}
 variable "igw_name" {}
 variable "route_table_name" {}
@@ -47,6 +41,11 @@ variable "load_balancer_target_port" {}
 variable "load_balancer_target_type" {}
 variable "load_balancer_target_protocol" {}
 variable "load_balancer_target_default_action_type" {}
+variable "load_balancer_https_port" {}
+variable "load_balancer_https_protocol" {}
+variable "load_balancer_https_status_code" {}
+variable "load_balancer_https_policy" {}
+variable "domain_name" {}
 variable "cluster_name" {}
 variable "ecs_instance_name" {}
 variable "ecs_instance_ami" {}
@@ -65,14 +64,11 @@ variable "ecs_service_lb_container_name" {}
 variable "ecs_service_lb_container_port" {}
 variable "container_1_name" {}
 variable "container_1_image" {}
-
 variable "container_1_cpu" {}
 variable "container_1_memory" {}
 variable "container_1_port" {}
-
 variable "container_2_name" {}
 variable "container_2_image" {}
-
 variable "container_2_cpu" {}
 variable "container_2_memory" {}
 variable "container_2_port" {}
