@@ -2,8 +2,7 @@ variable "region" {}
 variable "db_storage" {}
 variable "db_skip_final_snapshot" {}
 variable "db_engine" {}
-variable "db_user_ssm" {}
-variable "db_password_ssm" {}
+variable "db_user" {}
 variable "db_version" {}
 variable "db_inst_type" {}
 variable "db_name" {}
@@ -29,10 +28,7 @@ variable "cidr_public_3" {}
 variable "cidr_private_1" {}
 variable "cidr_private_2" {}
 variable "cidr_private_3" {}
-variable "az_1" {}
-variable "az_2" {}
-variable "az_3" {}
-variable "public_key_path" {}
+variable "ssh_key" {}
 variable "ssh_key_name" {}
 variable "load_balancer_name" {}
 variable "load_balancer_type" {}
@@ -58,7 +54,6 @@ variable "ecs_taskdef_network_mode" {}
 variable "ecs_taskdef_cpu" {}
 variable "ecs_taskdef_memory" {}
 variable "ecs_taskdef_compatibilities" {}
-variable "ecs_taskdef_execution_role" {}
 variable "ecs_service_name" {}
 variable "ecs_service_desired_count" {}
 variable "ecs_service_lb_container_name" {}

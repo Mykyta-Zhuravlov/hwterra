@@ -1,9 +1,14 @@
 // DOMAIN CONFIGURATION
-domain_name = "your_domain_name"
+//domain_name = ""
 
 
 // REGION CONFIGURATION
 region = "eu-west-1"
+
+
+// SSH KEY CONFIGURATION
+ssh_key_name = "key_name"
+ssh_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDpm1pDcyxpS3hIwSJiT3nVdwGqqdzxaIMvlExj8r/5jnR6f3wj7n0WMktlE8SfDqUY6QFNKAh9WRRhynowpkuDR4FnIKAk5mtJKlHY3eTCgBU5t4PgsooLWha7Kj0sKd+OfsWjZXSUN4NnnfXcUTGBlOiHh6iA8+wKF9RQMlMtsu7ySblo/PBRiZVYVvqhgl0/f1S0i408eCSWuXwe/EhSNgaar9zg9T+C2GpkAjtCnMNmRTMZr6V1RG3wu0Tjc+6zEFnYIPpV1/RcvpCBAbtDHBOYSp2LJsmL2AypBxnGEVaSgGqrkpORvQg3KTO0pefcLXQubWcXCqfPDtXHw9RzsSHR/+L5gJ9NnPNtZZZTEi2m/4QXMQSXa6Z47GDKn4sH6+VEiKlRqTpc3dJDYtBRzi0UPWx0oWJl9u8eX9Bb32ce634hUgdmRHc76JtyUismYqYlHZdMhfPkUAYXZ9ZNhmYeH0PiT54E1UqesuHpgBSNevid3HItHKnz9Zyyuk8= power@powerpower"
 
 
 // VPC CONFIGURATION
@@ -29,19 +34,13 @@ cidr_private_2                  = "10.1.22.0/24"
 cidr_private_3                  = "10.1.23.0/24"
 
 
-// SSH KEY CONFIGURATION
-ssh_key_name    = "key_name"
-public_key_path = "./keyway"
-
-
 // RDS & SECURITY GROUP CONFIGURATION
 db_storage             = "20"
 db_engine              = "mysql"
 db_version             = "5.7"
 db_inst_type           = "db.t2.micro"
 db_name                = "wordpress"
-db_user_ssm            = "/db_user"
-db_password_ssm        = "/db_password"
+db_user                = "user"
 db_skip_final_snapshot = "true"
 sg_db_name             = "sg-db"
 port_db_ingress        = "3306"
@@ -83,21 +82,20 @@ ecs_instance_type                = "t2.micro"
 ecs_instance_associate_public_ip = "true"
 ecs_instance_iam_profile         = "ecsInstanceRole"
 
-
+// var.az_1
 // ECS TASK DEFINITION CONFIGURATION
 ecs_taskdef_name            = "wordpress_taskdef"
 ecs_taskdef_network_mode    = "host"
 ecs_taskdef_cpu             = "512"
 ecs_taskdef_memory          = "950"
 ecs_taskdef_compatibilities = ["EC2"]
-ecs_taskdef_execution_role  = "arn:aws:iam::706226167828:role/ecsTaskExecutionRole"
 container_1_name            = "wordpress"
-container_1_image           = "706226167828.dkr.ecr.eu-west-1.amazonaws.com/wordpress:latest"
+container_1_image           = "wordpress:php7.4-fpm-alpine"
 container_1_cpu             = 128
 container_1_memory          = 512
 container_1_port            = 9000
 container_2_name            = "nginx"
-container_2_image           = "706226167828.dkr.ecr.eu-west-1.amazonaws.com/nginxfastcgi:latest"
+container_2_image           = "public.ecr.aws/q0s7z3d3/mykyta-zhuravlov-nginx"
 container_2_cpu             = 128
 container_2_memory          = 256
 container_2_port            = 80
@@ -108,9 +106,3 @@ ecs_service_name              = "wordpress_service"
 ecs_service_desired_count     = "1"
 ecs_service_lb_container_name = "nginx"
 ecs_service_lb_container_port = "80"
-
-
-// AZS CONFIG
-az_1 = "eu-west-1a"
-az_2 = "eu-west-1b"
-az_3 = "eu-west-1c"

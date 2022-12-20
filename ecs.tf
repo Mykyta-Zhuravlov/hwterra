@@ -1,9 +1,15 @@
+resource "aws_ecs_cluster" "cluster" {
+
+  name = var.cluster_name
+
+}
+
+
 resource "aws_ecs_task_definition" "taskdef" {
 
   family                   = var.ecs_taskdef_name
   network_mode             = var.ecs_taskdef_network_mode
   requires_compatibilities = var.ecs_taskdef_compatibilities
-  execution_role_arn       = var.ecs_taskdef_execution_role
   cpu                      = var.ecs_taskdef_cpu
   memory                   = var.ecs_taskdef_memory
 
@@ -26,11 +32,11 @@ resource "aws_ecs_task_definition" "taskdef" {
         },
         {
           "name" : "WORDPRESS_DB_USER",
-          "valuefrom" : "${data.aws_ssm_parameter.db_user_ssm.value}"
+          "value" : "${var.db_user}"
         },
         {
           "name" : "WORDPRESS_DB_PASSWORD",
-          "valuefrom" : "${data.aws_ssm_parameter.db_password_ssm.value}"
+          "value" : "${random_password.password.result}"
         }
       ]
       portMappings = [
@@ -61,4 +67,26 @@ resource "aws_ecs_task_definition" "taskdef" {
 }
 
 
+
+
+resource "aws_ecs_service" "service" {
+
+  name            = var.ecs_service_name
+  cluster         = aws_ecs_cluster.cluster.id
+  task_definition = aws_ecs_task_definition.taskdef.arn
+  desired_count   = var.ecs_service_desired_count
+
+  depends_on = [
+    aws_instance.ecs-instance01
+  ]
+
+
+  load_balancer {
+    target_group_arn = aws_lb_target_group.alb_tg.arn
+    container_name   = var.ecs_service_lb_container_name
+    container_port   = var.ecs_service_lb_container_port
+  }
+
+
+}
 
