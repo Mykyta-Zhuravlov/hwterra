@@ -45,7 +45,6 @@ variable "load_balancer_https_policy" {}
 variable "domain_name" {}
 variable "cluster_name" {}
 variable "ecs_instance_name" {}
-variable "ecs_instance_ami" {}
 variable "ecs_instance_type" {}
 variable "ecs_instance_iam_profile" {}
 variable "ecs_instance_associate_public_ip" {}
