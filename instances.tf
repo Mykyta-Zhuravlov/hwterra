@@ -20,7 +20,7 @@ resource "aws_db_instance" "database" {
 
 resource "aws_instance" "ecs-instance01" {
 
-  ami                         = var.ecs_instance_ami
+  ami                         = data.aws_ami.aws_ami_ecs.id
   instance_type               = var.ecs_instance_type
   availability_zone           = data.aws_availability_zones.available.names[0]
   subnet_id                   = aws_subnet.public_1.id
