@@ -33,10 +33,12 @@ resource "aws_ecs_task_definition" "taskdef" {
         {
           "name" : "WORDPRESS_DB_USER",
           "value" : "${var.db_user}"
-        },
+        }
+      ],
+      secrets = [
         {
-          "name" : "WORDPRESS_DB_PASSWORD",
-          "value" : "${random_password.password.result}"
+          "name" : "WORDPRESS_DB_PASSWORD"
+          "valueFrom" : "${aws_ssm_parameter.db_password.arn}"
         }
       ]
       portMappings = [
